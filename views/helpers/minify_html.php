@@ -21,7 +21,7 @@ class MinifyHtmlHelper extends AppHelper {
         $options = array(
             'cssMinifier' => false,
             'jsMinifier' => false,
-            'xhtml' => false
+            'xhtml' => true
         );
 
         return Minify_HTML::minify($html, $options);
