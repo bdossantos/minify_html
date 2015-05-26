@@ -1,17 +1,17 @@
 <?php
-//App::import('Vendor', 'minify', array('file' => 'minify'.DS.'min'.DS.'lib'.DS.'Minify'.DS.'HTML.php'));
-App::import('Vendor', 'Minify', array('file' => 'html.php'));
+App::import('Vendor', 'MinifyHtml.Minify_HTML', array('file' => 'html.php'));
+
 class MinifyHtmlHelper extends AppHelper {
 
     public $view;
 
-    public function __construct() {
+    public function __construct($view, $settings = array()) {
 
-        parent::__construct();
-        $this->view = ClassRegistry::getObject('view');
+        parent::__construct($view, $settings);
+        $this->view = $view;
     }
 
-    public function afterLayout() {
+    public function afterLayout($layoutFile) {
 
         $this->view->output = $this->minify_html($this->view->output);
     }
